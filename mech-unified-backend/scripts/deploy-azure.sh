@@ -47,6 +47,8 @@ az containerapp create \
     MONGODB_URI=secretref:mongodb-uri \
     MONGODB_DATABASE=mechDB \
     OPENAI_API_KEY=secretref:openai-api-key \
+    EMBEDDING_MODEL=text-embedding-3-large \
+    EMBEDDING_DIMENSIONS=3072 \
     CORS_ORIGINS=https://mech-ai.azurewebsites.net \
     CORS_CREDENTIALS=true \
     RATE_LIMIT_WINDOW_MS=60000 \
@@ -54,7 +56,9 @@ az containerapp create \
     LOG_LEVEL=info \
     ENABLE_REASONING_EMBEDDINGS=true \
     ENABLE_REAL_TIME_UPDATES=true \
-    ENABLE_SESSION_CHECKPOINTS=true
+    ENABLE_SESSION_CHECKPOINTS=true \
+    TOGETHER_API_KEY=secretref:together-api-key \
+    GITHUB_TOKEN=secretref:github-token
 
 # Get the app URL
 APP_URL=$(az containerapp show \

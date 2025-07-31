@@ -1,0 +1,15 @@
+name = "queue-service-proxy"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+ORIGIN_URL = "http://138.197.15.235:3003"
+METRICS_URL = "http://138.197.15.235:3004"
+
+# Add your custom domain
+routes = [
+  { pattern = "api.yourdomain.com/*", zone_name = "yourdomain.com" }
+]
+
+# Or use workers.dev subdomain for testing
+# workers_dev = true

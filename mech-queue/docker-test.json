@@ -1,0 +1,1 @@
+{"queue":"docker-test-queue","data":{"message":"Hello from Docker\!","containerTest":true},"metadata":{"environment":"docker","priority":"medium"}}

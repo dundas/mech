@@ -1,0 +1,69 @@
+
+> @referwith/queue-service@1.0.0 start
+> node dist/index.js
+
+[32minfo[39m: Starting queue service... {"service":"queue-service","timestamp":"2025-07-28T00:34:14.837Z"}
+[32minfo[39m: Connected to Redis {"service":"queue-service","timestamp":"2025-07-28T00:34:14.858Z"}
+[32minfo[39m: Connected to MongoDB {"service":"queue-service","timestamp":"2025-07-28T00:34:15.497Z"}
+[32minfo[39m: Initialized applications {"service":"queue-service","timestamp":"2025-07-28T00:34:15.498Z"}
+[32minfo[39m: Registered queue: email {"service":"queue-service","timestamp":"2025-07-28T00:34:15.501Z"}
+[32minfo[39m: Registered queue: webhook {"service":"queue-service","timestamp":"2025-07-28T00:34:15.502Z"}
+[32minfo[39m: Registered queue: image-processing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.504Z"}
+[32minfo[39m: Registered queue: pdf-generation {"service":"queue-service","timestamp":"2025-07-28T00:34:15.504Z"}
+[32minfo[39m: Registered queue: data-export {"service":"queue-service","timestamp":"2025-07-28T00:34:15.506Z"}
+[32minfo[39m: Registered queue: ai-processing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.506Z"}
+[32minfo[39m: Registered queue: scheduled-tasks {"service":"queue-service","timestamp":"2025-07-28T00:34:15.507Z"}
+[32minfo[39m: Registered queue: notifications {"service":"queue-service","timestamp":"2025-07-28T00:34:15.508Z"}
+[32minfo[39m: Registered queue: social-media {"service":"queue-service","timestamp":"2025-07-28T00:34:15.509Z"}
+[32minfo[39m: Registered queue: web-scraping {"service":"queue-service","timestamp":"2025-07-28T00:34:15.511Z"}
+[32minfo[39m: Registered queue: indexing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.511Z"}
+[32minfo[39m: Registered queues {"service":"queue-service","timestamp":"2025-07-28T00:34:15.514Z"}
+[32minfo[39m: Registered worker for queue: email {"service":"queue-service","timestamp":"2025-07-28T00:34:15.516Z"}
+[32minfo[39m: Registered worker for queue: webhook {"service":"queue-service","timestamp":"2025-07-28T00:34:15.516Z"}
+[32minfo[39m: Registered worker for queue: image-processing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.517Z"}
+[32minfo[39m: Registered worker for queue: pdf-generation {"service":"queue-service","timestamp":"2025-07-28T00:34:15.518Z"}
+[32minfo[39m: Registered worker for queue: data-export {"service":"queue-service","timestamp":"2025-07-28T00:34:15.518Z"}
+[32minfo[39m: Registered worker for queue: ai-processing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.518Z"}
+[32minfo[39m: Registered worker for queue: scheduled-tasks {"service":"queue-service","timestamp":"2025-07-28T00:34:15.519Z"}
+[32minfo[39m: Registered worker for queue: notifications {"service":"queue-service","timestamp":"2025-07-28T00:34:15.519Z"}
+[32minfo[39m: Registered worker for queue: social-media {"service":"queue-service","timestamp":"2025-07-28T00:34:15.519Z"}
+[32minfo[39m: Registered worker for queue: web-scraping {"service":"queue-service","timestamp":"2025-07-28T00:34:15.519Z"}
+[32minfo[39m: Registered workers {"service":"queue-service","timestamp":"2025-07-28T00:34:15.520Z"}
+[32minfo[39m: Initialized SimpleJobTracker {"service":"queue-service","timestamp":"2025-07-28T00:34:15.521Z"}
+[32minfo[39m: Set up webhook listeners for queue: email {"service":"queue-service","timestamp":"2025-07-28T00:34:15.521Z"}
+[32minfo[39m: Set up webhook listeners for queue: webhook {"service":"queue-service","timestamp":"2025-07-28T00:34:15.521Z"}
+[32minfo[39m: Set up webhook listeners for queue: image-processing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: pdf-generation {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: data-export {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: ai-processing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: scheduled-tasks {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: notifications {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: social-media {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: web-scraping {"service":"queue-service","timestamp":"2025-07-28T00:34:15.522Z"}
+[32minfo[39m: Set up webhook listeners for queue: indexing {"service":"queue-service","timestamp":"2025-07-28T00:34:15.523Z"}
+[32minfo[39m: Webhook manager initialized for queues: {"0":"email","1":"webhook","10":"indexing","2":"image-processing","3":"pdf-generation","4":"data-export","5":"ai-processing","6":"scheduled-tasks","7":"notifications","8":"social-media","9":"web-scraping","service":"queue-service","timestamp":"2025-07-28T00:34:15.523Z"}
+[32minfo[39m: Webhook manager initialized {"service":"queue-service","timestamp":"2025-07-28T00:34:15.523Z"}
+[32minfo[39m: Prometheus metrics enabled {"service":"queue-service","timestamp":"2025-07-28T00:34:15.529Z"}
+[32minfo[39m: Metrics server running on port 3004 {"service":"queue-service","timestamp":"2025-07-28T00:34:15.534Z"}
+[32minfo[39m: Queue service running on port 3007 {"service":"queue-service","timestamp":"2025-07-28T00:34:15.535Z"}
+[32minfo[39m: Environment: production {"service":"queue-service","timestamp":"2025-07-28T00:34:15.535Z"}
+[31merror[39m: Error creating subscription: cannot index parallel arrays [statuses] [queues] {"code":171,"errorLabelSet":{},"errorResponse":{"code":171,"errmsg":"cannot index parallel arrays [statuses] [queues]","index":0},"index":0,"service":"queue-service","stack":"MongoServerError: cannot index parallel arrays [statuses] [queues]\n    at InsertOneOperation.execute (/Users/kefentse/dev_env/mech/mech-queue/node_modules/mongodb/lib/operations/insert.js:51:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async tryOperation (/Users/kefentse/dev_env/mech/mech-queue/node_modules/mongodb/lib/operations/execute_operation.js:207:20)\n    at async executeOperation (/Users/kefentse/dev_env/mech/mech-queue/node_modules/mongodb/lib/operations/execute_operation.js:75:16)\n    at async Collection.insertOne (/Users/kefentse/dev_env/mech/mech-queue/node_modules/mongodb/lib/collection.js:157:16)","timestamp":"2025-07-28T00:34:32.436Z"}
+[32minfo[39m: Created subscription 6886c5e4e057953691587673 for application master {"service":"queue-service","timestamp":"2025-07-28T00:35:48.080Z"}
+[32minfo[39m: Created queue: payment-processing {"service":"queue-service","timestamp":"2025-07-28T00:36:02.624Z"}
+[32minfo[39m: Job b06f214e-e283-450a-94ad-c4ba78436fcb submitted to queue payment-processing {"metadata":{"customerId":"cust-999","priority":"high"},"service":"queue-service","timestamp":"2025-07-28T00:36:02.642Z"}
+[32minfo[39m: Received SIGTERM, shutting down gracefully... {"service":"queue-service","timestamp":"2025-07-28T00:40:22.627Z"}
+[32minfo[39m: Shutting down queue manager... {"service":"queue-service","timestamp":"2025-07-28T00:40:22.628Z"}
+[32minfo[39m: Queue manager shutdown complete {"service":"queue-service","timestamp":"2025-07-28T00:40:22.646Z"}
+[32minfo[39m: Shutting down webhook manager... {"service":"queue-service","timestamp":"2025-07-28T00:40:22.647Z"}
+[32minfo[39m: Closed webhook listeners for queue: email {"service":"queue-service","timestamp":"2025-07-28T00:40:22.647Z"}
+[32minfo[39m: Closed webhook listeners for queue: webhook {"service":"queue-service","timestamp":"2025-07-28T00:40:22.649Z"}
+[32minfo[39m: Closed webhook listeners for queue: image-processing {"service":"queue-service","timestamp":"2025-07-28T00:40:22.649Z"}
+[32minfo[39m: Closed webhook listeners for queue: pdf-generation {"service":"queue-service","timestamp":"2025-07-28T00:40:22.649Z"}
+[32minfo[39m: Closed webhook listeners for queue: data-export {"service":"queue-service","timestamp":"2025-07-28T00:40:22.650Z"}
+[32minfo[39m: Closed webhook listeners for queue: ai-processing {"service":"queue-service","timestamp":"2025-07-28T00:40:22.651Z"}
+[32minfo[39m: Closed webhook listeners for queue: scheduled-tasks {"service":"queue-service","timestamp":"2025-07-28T00:40:22.651Z"}
+[32minfo[39m: Closed webhook listeners for queue: notifications {"service":"queue-service","timestamp":"2025-07-28T00:40:22.651Z"}
+[32minfo[39m: Closed webhook listeners for queue: social-media {"service":"queue-service","timestamp":"2025-07-28T00:40:22.652Z"}
+[32minfo[39m: Closed webhook listeners for queue: web-scraping {"service":"queue-service","timestamp":"2025-07-28T00:40:22.652Z"}
+[32minfo[39m: Closed webhook listeners for queue: indexing {"service":"queue-service","timestamp":"2025-07-28T00:40:22.652Z"}
+[32minfo[39m: Webhook manager shutdown complete {"service":"queue-service","timestamp":"2025-07-28T00:40:22.652Z"}

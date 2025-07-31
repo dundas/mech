@@ -1,0 +1,22 @@
+# EMERGENCY REDIS SECURITY FIX
+# Run these commands to fix the exposed Redis issue
+
+# Option 1: Quick SSH commands (run each line)
+ssh root@138.197.15.235 "sudo systemctl stop redis redis-server; sudo systemctl disable redis redis-server"
+ssh root@138.197.15.235 "sudo fuser -k 6379/tcp; sudo ufw deny 6379/tcp; sudo ufw --force enable"
+ssh root@138.197.15.235 "sudo apt-get remove -y redis-server redis-tools"
+ssh root@138.197.15.235 "sudo netstat -tlnp | grep 6379"
+
+# Option 2: Run the complete fix script
+cd /Users/kefentse/dev_env/mech/mech-queue
+./fix-redis-doctl.sh
+
+# Option 3: Copy and run the emergency script
+scp ./scripts/secure-redis-emergency.sh root@138.197.15.235:/tmp/
+ssh root@138.197.15.235 "bash /tmp/secure-redis-emergency.sh"
+
+# Verify the fix worked (this should fail/timeout):
+telnet 138.197.15.235 6379
+
+# Check service status:
+ssh root@138.197.15.235 "docker ps | grep queue-service"

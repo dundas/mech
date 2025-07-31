@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  queue-service:
+    image: registry.digitalocean.com/queue-service-registry/queue-service:latest
+    restart: unless-stopped
+    ports:
+      - "3003:3003"
+      - "3004:3004"
+    environment:
+      - NODE_ENV=production
+      # DigitalOcean Managed Valkey connection
+      - REDIS_HOST=${VALKEY_HOST}
+      - REDIS_PORT=${VALKEY_PORT:-25061}
+      - REDIS_PASSWORD=${VALKEY_PASSWORD}
+      - REDIS_DB=${VALKEY_DB:-0}
+      
+      # Security
+      - MASTER_API_KEY=${MASTER_API_KEY}
+      - ENABLE_API_KEY_AUTH=true
+      
+      # Optional integrations
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - MONGODB_URI=${MONGODB_URI}
+      
+      # Email service credentials (choose one)
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      
+      # Monitoring
+      - ENABLE_PROMETHEUS_METRICS=true
+      - LOG_LEVEL=info
+      
+      # Production optimizations
+      - MAX_WORKERS_PER_QUEUE=10
+      - RATE_LIMIT_MAX_REQUESTS=1000
+      - RATE_LIMIT_WINDOW_MS=60000
+      
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Resource limits for DigitalOcean
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+networks:
+  default:
+    driver: bridge

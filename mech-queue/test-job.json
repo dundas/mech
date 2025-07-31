@@ -1,0 +1,11 @@
+{
+  "queue": "test-custom-queue",
+  "data": {
+    "message": "Hello from custom queue\!",
+    "userId": "user-123"
+  },
+  "metadata": {
+    "priority": "high",
+    "customerId": "cust-456"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "test-email",
+  "data": {
+    "to": "test@example.com",
+    "subject": "Test Email from DigitalOcean",
+    "body": "Hello! This is a test email from your deployed queue service."
+  }
+}

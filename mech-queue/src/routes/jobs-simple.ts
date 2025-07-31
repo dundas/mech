@@ -1,0 +1,207 @@
+import { Router } from 'express';
+import { SimpleJobTracker } from '../services/simple-job-tracker';
+import { AuthenticatedRequest } from '../middleware/auth';
+import logger from '../utils/logger';
+
+const router = Router();
+
+// 1. Submit a job - returns job ID
+router.post('/', async (req: AuthenticatedRequest, res) => {
+  try {
+    const { queue, data, metadata, webhooks } = req.body;
+
+    if (!queue || !data) {
+      return res.status(400).json({
+        success: false,
+        error: 'Queue name and data are required',
+      });
+    }
+
+    const tracker = SimpleJobTracker.getInstance();
+    const jobId = await tracker.submitJob(
+      queue, 
+      {
+        ...data,
+        _applicationId: req.application!.id,
+      },
+      {
+        metadata,
+        webhooks,
+      }
+    );
+
+    res.status(201).json({
+      success: true,
+      jobId,
+      message: `Job submitted to ${queue} queue`,
+    });
+
+  } catch (error) {
+    logger.error('Error submitting job:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to submit job',
+    });
+  }
+});
+
+// 2. Update a job (for workers/external services)
+router.put('/:jobId', async (req: AuthenticatedRequest, res) => {
+  try {
+    const { jobId } = req.params;
+    const { status, progress, result, error, metadata } = req.body;
+
+    if (!status) {
+      return res.status(400).json({
+        success: false,
+        error: 'Status is required',
+      });
+    }
+
+    const tracker = SimpleJobTracker.getInstance();
+    await tracker.updateJob({
+      jobId,
+      status,
+      progress,
+      result,
+      error,
+      metadata,
+    });
+
+    res.json({
+      success: true,
+      message: `Job ${jobId} updated`,
+    });
+
+  } catch (error) {
+    logger.error('Error updating job:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update job',
+    });
+  }
+});
+
+// 3. Get job status
+router.get('/:jobId', async (req: AuthenticatedRequest, res) => {
+  try {
+    const { jobId } = req.params;
+    
+    const tracker = SimpleJobTracker.getInstance();
+    const job = await tracker.getJobStatus(jobId);
+    
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        error: 'Job not found',
+      });
+    }
+
+    // Verify application access
+    if (job.data._applicationId !== req.application!.id && req.application!.id !== 'master') {
+      return res.status(403).json({
+        success: false,
+        error: 'Access denied',
+      });
+    }
+
+    res.json({
+      success: true,
+      job,
+    });
+
+  } catch (error) {
+    logger.error('Error getting job:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to get job status',
+    });
+  }
+});
+
+// 4. List jobs for application with metadata filtering
+router.get('/', async (req: AuthenticatedRequest, res) => {
+  try {
+    const { queue, status, limit = '100', ...metadataFilters } = req.query;
+    
+    // Parse metadata filters from query params
+    const metadata: Record<string, any> = {};
+    for (const [key, value] of Object.entries(metadataFilters)) {
+      if (key.startsWith('metadata.')) {
+        const metaKey = key.substring(9); // Remove 'metadata.' prefix
+        metadata[metaKey] = value;
+      }
+    }
+    
+    const tracker = SimpleJobTracker.getInstance();
+    const jobs = await tracker.listJobs(req.application!.id, {
+      queue: queue as string,
+      status: status as string,
+      metadata: Object.keys(metadata).length > 0 ? metadata : undefined,
+      limit: parseInt(limit as string),
+    });
+
+    res.json({
+      success: true,
+      jobs,
+      count: jobs.length,
+    });
+
+  } catch (error) {
+    logger.error('Error listing jobs:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to list jobs',
+    });
+  }
+});
+
+// 5. Register webhook for job updates (optional)
+router.post('/:jobId/webhook', async (req: AuthenticatedRequest, res) => {
+  try {
+    const { jobId } = req.params;
+    const { webhooks } = req.body;
+
+    if (!webhooks || typeof webhooks !== 'object') {
+      return res.status(400).json({
+        success: false,
+        error: 'Webhooks object is required (e.g., { "completed": "https://...", "failed": "https://..." })',
+      });
+    }
+
+    // Verify job ownership first
+    const tracker = SimpleJobTracker.getInstance();
+    const job = await tracker.getJobStatus(jobId);
+    
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        error: 'Job not found',
+      });
+    }
+
+    if (job.data._applicationId !== req.application!.id && req.application!.id !== 'master') {
+      return res.status(403).json({
+        success: false,
+        error: 'Access denied',
+      });
+    }
+
+    await tracker.registerWebhook(jobId, webhooks);
+
+    res.json({
+      success: true,
+      message: `Webhooks registered for job ${jobId}`,
+      webhooks,
+    });
+
+  } catch (error) {
+    logger.error('Error registering webhook:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to register webhook',
+    });
+  }
+});
+
+export default router;

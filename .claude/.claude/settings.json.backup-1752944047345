@@ -1,0 +1,72 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Write $CLAUDE_FILE_PATHS"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Edit $CLAUDE_FILE_PATHS"
+          }
+        ]
+      },
+      {
+        "matcher": "MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse MultiEdit $CLAUDE_FILE_PATHS"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Bash \"$CLAUDE_COMMAND\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js SessionStart session ''"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js Stop session ''"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js Message user \"$CLAUDE_USER_PROMPT\""
+          }
+        ]
+      }
+    ]
+  }
+}

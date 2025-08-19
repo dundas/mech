@@ -47,7 +47,7 @@ docker run -d \
     -e REDIS_PORT="<VALKEY_PORT>" \
     -e REDIS_PASSWORD="<VALKEY_PASSWORD>" \
     -e REDIS_DB=0 \
-    -e MONGODB_URI="mongodb+srv://mechMIN:9rZmLfC1h557yngR@main.h81m1fq.mongodb.net/queue?retryWrites=true&w=majority&appName=MAIN" \
+    -e MONGODB_URI="your_mongodb_uri_here" \
     -e MASTER_API_KEY="your-secure-api-key" \
     -e ENABLE_API_KEY_AUTH=true \
     -e ENABLE_PROMETHEUS_METRICS=true \

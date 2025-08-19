@@ -1,0 +1,10 @@
+{
+  "name": "test-container",
+  "provider": "digitalocean",
+  "region": "nyc1",
+  "size": "s-1vcpu-1gb",
+  "userData": "IyEvYmluL2Jhc2gKZWNobyAiSGVsbG8gV29ybGQi",
+  "tags": ["mech", "test"],
+  "purpose": "DEDICATED_SERVICE"
+}
+EOF < /dev/null

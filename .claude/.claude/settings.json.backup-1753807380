@@ -1,0 +1,143 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Write $CLAUDE_FILE_PATH",
+            "timeout": 30000
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Edit $CLAUDE_FILE_PATH",
+            "timeout": 30000
+          }
+        ]
+      },
+      {
+        "matcher": "MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse MultiEdit $CLAUDE_FILE_PATH",
+            "timeout": 30000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Bash \"$CLAUDE_COMMAND\"",
+            "timeout": 60000
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Read $CLAUDE_FILE_PATH",
+            "timeout": 30000
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PostToolUse Task \"$CLAUDE_TASK_DESCRIPTION\"",
+            "timeout": 60000
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PreToolUse Write $CLAUDE_FILE_PATH",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PreToolUse Bash \"$CLAUDE_COMMAND\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js UserPromptSubmit prompt \"$CLAUDE_USER_PROMPT\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js Stop session ''",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js SubagentStop subagent ''",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js Notification notification \"$CLAUDE_NOTIFICATION\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MECH_BACKEND_URL=http://localhost:3001 node .claude/hooks/mech-hook.js PreCompact compact ''",
+            "timeout": 30000
+          }
+        ]
+      }
+    ]
+  }
+}

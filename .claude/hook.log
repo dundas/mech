@@ -1,0 +1,472 @@
+[2025-07-19T01:20:57.571Z] Hook triggered: TestEvent - TestTool - test-file.txt
+[2025-07-19T01:20:57.632Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T01:20:57.628Z","requestId":"85ad3155-f3b7-4ad7-b7f2-3bef08eb3f4d","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"eventType","message":"\"eventType\" must be one of [PreToolUse, PostToolUse, Stop, Notification, SubagentStop, SessionStart, Message]"}]}}
+[2025-07-19T01:21:42.236Z] Hook triggered: PostToolUse - Write - test-hook-setup.txt
+[2025-07-19T01:21:42.410Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T03:27:35.584Z] Hook triggered: PostToolUse - Write - /test/file.txt
+[2025-07-19T03:27:35.854Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T03:27:35.899Z] Hook triggered: PostToolUse - Read - /test/read-file.txt
+[2025-07-19T03:27:36.016Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T03:27:36.060Z] Hook triggered: PreToolUse - Bash - ls -la
+[2025-07-19T03:27:36.229Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T03:27:36.272Z] Hook triggered: UserPromptSubmit - prompt - Test user prompt
+[2025-07-19T03:27:36.309Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T03:27:36.306Z","requestId":"fcca4bd1-f13d-472e-959b-b1ba8d13b092","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"eventType","message":"\"eventType\" must be one of [PreToolUse, PostToolUse, Stop, Notification, SubagentStop, SessionStart, Message]"}]}}
+[2025-07-19T03:27:36.354Z] Hook triggered: SessionStart - session - ls -la
+[2025-07-19T03:27:36.379Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"sessionId and projectId are required","timestamp":"2025-07-19T03:27:36.377Z","requestId":"1551a900-1f48-412b-b268-fb7eb4e9454e","stack":"ValidationError: sessionId and projectId are required\n    at SessionService.createSession (/Users/kefentse/dev_env/mech/mech-unified-backend/src/services/session.service.ts:11:15)\n    at processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/src/routes/claude/claude.controller.ts:38:32)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:28:5\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)"}}
+[2025-07-19T17:05:02.529Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:05:02.740Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:05:59.248Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:05:59.320Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:05:59.312Z","requestId":"8f58e6e6-98bc-4d60-8257-cccccee2ba42","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"eventType","message":"\"eventType\" must be one of [PreToolUse, PostToolUse, Stop, Notification, SubagentStop, SessionStart, Message]"}]}}
+[2025-07-19T17:06:21.261Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:06:21.453Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:06:27.909Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:06:28.078Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:06:34.430Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:06:34.602Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:06:41.361Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:06:41.490Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:06:46.820Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:06:46.938Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:06:51.044Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:06:51.211Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:07:07.370Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:07:07.410Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:07:07.406Z","requestId":"a2b02139-6935-45a3-b3be-ffdff0231ede","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"eventType","message":"\"eventType\" must be one of [PreToolUse, PostToolUse, Stop, Notification, SubagentStop, SessionStart, Message]"}]}}
+[2025-07-19T17:07:30.343Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:30.380Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:30.446Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:30.449Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:30.574Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:07:30.583Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:07:30.893Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:07:30.893Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:07:41.675Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:41.816Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:07:54.354Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:54.480Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:07:59.679Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:07:59.841Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:08:22.459Z] Hook triggered: SubagentStop - subagent - 
+[2025-07-19T17:08:22.621Z] ✅ Hook sent successfully: SubagentStop - subagent
+[2025-07-19T17:08:22.790Z] Hook triggered: PostToolUse - Task - 
+[2025-07-19T17:08:22.909Z] ✅ Hook sent successfully: PostToolUse - Task
+[2025-07-19T17:08:27.603Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:08:27.772Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:08:40.162Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:08:40.309Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:08:44.909Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:08:45.048Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:09:02.636Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:09:02.807Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:09:09.963Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:09:10.108Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:10:40.928Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:10:41.078Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:10:51.212Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:10:51.335Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:11:41.322Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:11:41.558Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:11:46.701Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:11:46.838Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:12:09.580Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:12:09.727Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:12:12.749Z] Hook triggered: PostToolUse - Edit - 
+[2025-07-19T17:12:12.970Z] ✅ Hook sent successfully: PostToolUse - Edit
+[2025-07-19T17:12:49.148Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:12:49.278Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:13:04.482Z] Hook triggered: PostToolUse - MultiEdit - 
+[2025-07-19T17:13:04.682Z] ✅ Hook sent successfully: PostToolUse - MultiEdit
+[2025-07-19T17:13:17.243Z] Hook triggered: PostToolUse - Edit - 
+[2025-07-19T17:13:17.394Z] ✅ Hook sent successfully: PostToolUse - Edit
+[2025-07-19T17:13:22.605Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:13:22.820Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:13:29.927Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:13:30.068Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:14:04.085Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:14:04.219Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:14:08.966Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:14:09.176Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:14:13.876Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:14:14.069Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:14:21.245Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:14:21.383Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:14:34.409Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:14:34.536Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:14:39.809Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:14:40.033Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:14:43.358Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:14:43.473Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:14:49.225Z] Hook triggered: PreToolUse - Write - 
+[2025-07-19T17:14:49.392Z] ✅ Hook sent successfully: PreToolUse - Write
+[2025-07-19T17:14:54.181Z] Hook triggered: PostToolUse - Write - 
+[2025-07-19T17:14:54.318Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T17:15:03.697Z] Hook triggered: Stop - session - 
+[2025-07-19T17:15:03.795Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752945303696-84uctgluz not found","timestamp":"2025-07-19T17:15:03.792Z","requestId":"ab598ccd-f324-42f5-9492-853ccdd99cab","stack":"NotFoundError: Session with id session-1752945303696-84uctgluz not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/src/services/session.service.ts:143:15)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/src/routes/claude/claude.controller.ts:129:11)"}}
+[2025-07-19T17:19:41.597Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:19:41.625Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Cannot POST /api/claude/hook"}}
+[2025-07-19T17:19:53.225Z] Hook triggered: Stop - session - 
+[2025-07-19T17:19:53.266Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Cannot POST /api/claude/hook"}}
+[2025-07-19T17:20:49.546Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:20:49.567Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Cannot POST /api/claude/hook"}}
+[2025-07-19T17:21:06.587Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:21:06.613Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Cannot POST /api/claude/hook"}}
+[2025-07-19T17:21:11.145Z] Hook triggered: PostToolUse - Edit - 
+[2025-07-19T17:21:11.307Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:21:11.293Z","requestId":"28209e0d-bcfd-4f50-a024-5dd5a6bfa7d3","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"operation","message":"\"operation\" is required"},{"field":"payload","message":"\"payload\" is required"},{"field":"metadata","message":"\"metadata\" is required"}]}}
+[2025-07-19T17:21:16.189Z] Hook triggered: Stop - session - 
+[2025-07-19T17:21:16.208Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:21:16.205Z","requestId":"5c0ad821-4428-4cd6-bdb8-b44b80c6d03e","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"operation","message":"\"operation\" is required"},{"field":"payload","message":"\"payload\" is required"},{"field":"metadata","message":"\"metadata\" is required"}]}}
+[2025-07-19T17:21:54.623Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:21:54.688Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:21:54.680Z","requestId":"fe88094c-66b7-4681-a762-6ba39ae1f932","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"operation","message":"\"operation\" is required"},{"field":"payload","message":"\"payload\" is required"},{"field":"metadata","message":"\"metadata\" is required"}]}}
+[2025-07-19T17:22:10.846Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:22:10.871Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:22:10.867Z","requestId":"c6b1f44b-8f37-4242-abb7-64f42b92ffd1","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"operation","message":"\"operation\" is required"},{"field":"payload","message":"\"payload\" is required"},{"field":"metadata","message":"\"metadata\" is required"}]}}
+[2025-07-19T17:22:14.322Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:22:14.363Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:22:14.358Z","requestId":"80a4c50b-1e50-4d88-b4ce-f1abd3133828","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"operation","message":"\"operation\" is required"},{"field":"payload","message":"\"payload\" is required"},{"field":"metadata","message":"\"metadata\" is required"}]}}
+[2025-07-19T17:22:20.915Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:22:20.942Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:22:20.936Z","requestId":"2f4f8ef5-abbb-4def-86a8-8187c9b41c39","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"operation","message":"\"operation\" is required"},{"field":"payload","message":"\"payload\" is required"},{"field":"metadata","message":"\"metadata\" is required"}]}}
+[2025-07-19T17:22:48.867Z] Hook triggered: PostToolUse - Edit - 
+[2025-07-19T17:22:48.916Z] ❌ Hook failed: 400 - {"success":false,"error":{"code":"VALIDATION_ERROR","message":"Validation failed","timestamp":"2025-07-19T17:22:48.911Z","requestId":"aad81073-a8b0-40e4-ae18-aaaaa5212e85","stack":"ValidationError: Validation failed\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/src/middleware/validation.ts:22:13\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:149:13)\n    at Route.dispatch (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/route.js:119:3)\n    at newFn (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express-async-errors/index.js:16:20)\n    at Layer.handle [as handle_request] (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/layer.js:95:5)\n    at /Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/kefentse/dev_env/mech/mech-unified-backend/node_modules/express/lib/router/index.js:280:10)","details":[{"field":"payload.error","message":"\"payload.error\" must be a string"},{"field":"payload.reasoning","message":"\"payload.reasoning\" is not allowed to be empty"},{"field":"payload.command","message":"\"payload.command\" is not allowed to be empty"},{"field":"metadata.gitCommit","message":"\"metadata.gitCommit\" is not allowed to be empty"},{"field":"metadata.branch","message":"\"metadata.branch\" is not allowed to be empty"}]}}
+[2025-07-19T17:23:00.405Z] Hook triggered: PostToolUse - Edit - 
+[2025-07-19T17:23:00.528Z] ✅ Hook sent successfully: PostToolUse - Edit
+[2025-07-19T17:23:14.523Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:23:14.808Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:23:20.572Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:23:20.711Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:23:29.470Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:23:29.668Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:23:33.037Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:23:33.150Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:23:41.320Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:23:41.514Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:24:21.696Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:24:21.819Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:24:28.125Z] Hook triggered: PreToolUse - Write - 
+[2025-07-19T17:24:28.286Z] ✅ Hook sent successfully: PreToolUse - Write
+[2025-07-19T17:24:28.433Z] Hook triggered: PostToolUse - Write - 
+[2025-07-19T17:24:28.550Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T17:24:45.430Z] Hook triggered: Stop - session - 
+[2025-07-19T17:24:45.540Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752945885433-1v006w166 not found","timestamp":"2025-07-19T17:24:45.524Z","requestId":"9240bebd-e9fc-4810-8296-8e91407ced0d","stack":"NotFoundError: Session with id session-1752945885433-1v006w166 not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/src/services/session.service.ts:143:15)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/src/routes/claude/claude.controller.ts:129:11)"}}
+[2025-07-19T17:24:51.730Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:24:51.893Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:26:54.275Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:26:54.416Z] ✅ Hook sent successfully: UserPromptSubmit - prompt
+[2025-07-19T17:27:02.060Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:27:02.324Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:27:08.111Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:27:08.273Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:27:41.267Z] Hook triggered: PreToolUse - Write - 
+[2025-07-19T17:27:41.489Z] ✅ Hook sent successfully: PreToolUse - Write
+[2025-07-19T17:27:41.778Z] Hook triggered: PostToolUse - Write - 
+[2025-07-19T17:27:41.909Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T17:27:47.509Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:27:47.757Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:27:56.191Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:27:56.307Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:28:05.467Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:28:05.646Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:28:15.128Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:28:15.322Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:28:19.070Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:28:19.194Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:28:26.241Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:28:26.456Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:28:31.333Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:28:31.461Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:28:47.512Z] Hook triggered: PreToolUse - Write - 
+[2025-07-19T17:28:47.691Z] ✅ Hook sent successfully: PreToolUse - Write
+[2025-07-19T17:28:48.022Z] Hook triggered: PostToolUse - Write - 
+[2025-07-19T17:28:48.231Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T17:28:56.397Z] Hook triggered: Stop - session - 
+[2025-07-19T17:28:56.506Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752946136399-m5l6764i1 not found","timestamp":"2025-07-19T17:28:56.495Z","requestId":"44a26c87-2e54-4a41-82d3-f96a60362864","stack":"NotFoundError: Session with id session-1752946136399-m5l6764i1 not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/src/services/session.service.ts:143:15)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/src/routes/claude/claude.controller.ts:129:11)"}}
+[2025-07-19T17:29:02.665Z] Hook triggered: Notification - notification - 
+[2025-07-19T17:29:02.799Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T17:49:51.214Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:49:51.214Z] Hook triggered: Message -  - 
+[2025-07-19T17:49:51.475Z] ✅ Hook sent successfully: Message - 
+[2025-07-19T17:49:51.479Z] ✅ Hook sent successfully: UserPromptSubmit - prompt
+[2025-07-19T17:49:56.083Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:49:56.268Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:49:56.361Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:49:56.361Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:49:56.487Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:49:56.490Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:50:00.116Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:50:00.295Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:50:00.393Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:50:00.397Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:50:00.512Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:50:00.515Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:52:42.462Z] Hook triggered: Message -  - 
+[2025-07-19T17:52:42.463Z] Hook triggered: UserPromptSubmit - prompt - 
+[2025-07-19T17:52:42.616Z] ✅ Hook sent successfully: UserPromptSubmit - prompt
+[2025-07-19T17:52:42.619Z] ✅ Hook sent successfully: Message - 
+[2025-07-19T17:52:47.992Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:52:48.211Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:52:48.369Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:52:48.369Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:52:48.483Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:52:48.486Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:52:54.740Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:52:54.941Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:52:55.048Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:52:55.048Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:52:55.174Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:52:55.176Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:53:01.524Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:53:01.698Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:53:01.795Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:53:01.798Z] Hook triggered: PostToolUse - Read - 
+[2025-07-19T17:53:01.908Z] ✅ Hook sent successfully: PostToolUse - Read
+[2025-07-19T17:53:01.908Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:53:28.414Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:53:28.419Z] Hook triggered: PreToolUse - Write - 
+[2025-07-19T17:53:28.583Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:53:28.585Z] ✅ Hook sent successfully: PreToolUse - Write
+[2025-07-19T17:53:29.808Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:53:29.810Z] Hook triggered: PostToolUse - Write - 
+[2025-07-19T17:53:29.939Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:53:29.940Z] ✅ Hook sent successfully: PostToolUse - Write
+[2025-07-19T17:53:34.248Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:53:34.249Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:53:34.428Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:53:34.431Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:53:37.692Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:53:37.692Z] Hook triggered: PostToolUse - Bash - 
+[2025-07-19T17:53:37.852Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:53:37.852Z] ✅ Hook sent successfully: PostToolUse - Bash
+[2025-07-19T17:53:42.410Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:53:42.416Z] Hook triggered: PreToolUse - Bash - 
+[2025-07-19T17:53:42.778Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:53:42.791Z] ✅ Hook sent successfully: PreToolUse - Bash
+[2025-07-19T17:53:49.522Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:53:49.683Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:53:56.903Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:53:57.065Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:53:57.161Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:53:57.280Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:54:33.097Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:54:33.269Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:54:33.485Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:54:33.504Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:54:40.776Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:54:40.789Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:54:53.987Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:54:54.000Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:54:54.107Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:54:54.121Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:06.791Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:55:06.805Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:06.967Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:55:06.996Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:10.865Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:55:10.879Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:20.070Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:55:20.241Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:24.864Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:55:24.877Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:28.062Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:55:28.074Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:55:31.494Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:55:31.507Z] ❌ Hook failed: Network - Unknown error
+[2025-07-19T17:57:37.283Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:57:37.825Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:57:46.037Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:57:46.257Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:57:52.119Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:57:52.426Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:57:56.147Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:57:56.364Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:58:00.940Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:58:01.213Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:58:01.337Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:58:01.547Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:58:08.288Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:58:08.571Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:58:12.381Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:58:12.585Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:58:17.684Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:58:17.975Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:58:22.410Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:58:22.649Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:58:26.483Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:58:26.748Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:58:30.953Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:58:31.203Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:58:44.330Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:58:44.606Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:58:44.825Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:58:45.058Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:58:48.936Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:58:49.190Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:58:54.750Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:58:54.981Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:06.131Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:06.440Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:06.616Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:06.833Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:10.302Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:10.616Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:15.663Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:15.878Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:20.103Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:20.368Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:20.817Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:21.163Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:28.506Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:28.828Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:29.073Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:29.336Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:33.892Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:34.149Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:34.272Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:34.473Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:38.814Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:39.072Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:39.206Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:39.417Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:44.234Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:44.702Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T17:59:49.439Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T17:59:49.797Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T17:59:56.030Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T17:59:56.332Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:00:02.009Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:00:02.231Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:00:12.051Z] Hook triggered: Stop - session - 
+[2025-07-19T18:00:12.126Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752948012053-xlibkibmk not found","timestamp":"2025-07-19T18:00:12.122Z","requestId":"e480b39a-0ed8-40c6-961f-60bcb1102c25","stack":"NotFoundError: Session with id session-1752948012053-xlibkibmk not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/services/session.service.js:127:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/routes/claude/claude.controller.js:122:21)"}}
+[2025-07-19T18:00:18.248Z] Hook triggered: Notification - notification - 
+[2025-07-19T18:00:18.462Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T18:02:34.490Z] Hook triggered: Message -  - 
+[2025-07-19T18:02:34.719Z] ✅ Hook sent successfully: Message - 
+[2025-07-19T18:02:40.720Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:02:40.985Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:02:41.167Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:02:41.377Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:02:44.977Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:02:45.269Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:02:45.468Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:02:45.675Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:02:51.964Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:02:52.244Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:02:52.521Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:02:52.788Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:02:57.230Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:02:57.563Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:03:01.584Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:03:01.818Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:03:14.954Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:03:15.323Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:03:15.562Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:03:15.820Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:03:20.067Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:03:20.366Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:03:24.678Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:03:24.955Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:03:29.437Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:03:29.689Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:03:29.814Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:03:30.037Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:03:34.860Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:03:35.150Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:03:39.519Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:03:39.780Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:03:59.922Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:04:00.184Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:04:00.397Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:04:00.602Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:04:06.668Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:04:06.947Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:04:10.972Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:04:11.184Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:04:16.239Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:04:16.337Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:04:16.538Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:04:16.594Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:04:22.244Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:04:22.877Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:04:26.085Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:04:26.350Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:04:33.252Z] Hook triggered: Stop - session - 
+[2025-07-19T18:04:33.346Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752948273253-gm611kw21 not found","timestamp":"2025-07-19T18:04:33.341Z","requestId":"6965ebaa-1b18-4ec9-97bf-d247f252cf54","stack":"NotFoundError: Session with id session-1752948273253-gm611kw21 not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/services/session.service.js:127:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/routes/claude/claude.controller.js:122:21)"}}
+[2025-07-19T18:04:36.018Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:04:36.266Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:04:39.479Z] Hook triggered: Notification - notification - 
+[2025-07-19T18:04:39.684Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T18:04:53.284Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:04:53.540Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:04:58.528Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:04:58.735Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:05:08.180Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:05:08.461Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:05:31.017Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:05:31.238Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:05:37.003Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:05:37.314Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:05:37.488Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:05:37.786Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:05:42.502Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:05:42.827Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:05:49.133Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:05:49.372Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:05:54.544Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:05:54.810Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:06:20.886Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:06:21.186Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:06:40.687Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:06:40.907Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:06:45.809Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:06:46.103Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:06:53.452Z] Hook triggered: Message -  - 
+[2025-07-19T18:06:53.727Z] ✅ Hook sent successfully: Message - 
+[2025-07-19T18:07:04.703Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:07:05.003Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:07:05.187Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:07:05.395Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:07:10.354Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:07:10.646Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:07:19.267Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:07:19.510Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:07:32.609Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:07:33.059Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:07:37.831Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:07:38.451Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:07:39.197Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:07:39.470Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:07:46.573Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:07:47.433Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:07:56.384Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:07:56.618Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:07:56.960Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:07:57.214Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:08:02.065Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:08:02.439Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:08:03.562Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:08:03.878Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:08:05.936Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:08:06.449Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:08:13.447Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:08:13.763Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:08:16.034Z] Hook triggered: Stop - session - 
+[2025-07-19T18:08:16.100Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752948496036-02jfsqnug not found","timestamp":"2025-07-19T18:08:16.097Z","requestId":"0caad2f3-4f60-4ce3-bdf1-2b739a68e51c","stack":"NotFoundError: Session with id session-1752948496036-02jfsqnug not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/services/session.service.js:127:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/routes/claude/claude.controller.js:122:21)"}}
+[2025-07-19T18:08:17.886Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:08:18.233Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:08:22.212Z] Hook triggered: Notification - notification - 
+[2025-07-19T18:08:22.434Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T18:08:22.516Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:08:22.804Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:08:28.096Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:08:28.419Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:08:33.453Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:08:33.718Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:08:46.409Z] Hook triggered: Stop - session - 
+[2025-07-19T18:08:46.489Z] ❌ Hook failed: 404 - {"success":false,"error":{"code":"RESOURCE_NOT_FOUND","message":"Session with id session-1752948526411-571iwnzpd not found","timestamp":"2025-07-19T18:08:46.484Z","requestId":"1fbe6ac3-18e1-4111-b65e-e279bc116915","stack":"NotFoundError: Session with id session-1752948526411-571iwnzpd not found\n    at SessionService.endSession (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/services/session.service.js:127:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async processHook (/Users/kefentse/dev_env/mech/mech-unified-backend/dist/routes/claude/claude.controller.js:122:21)"}}
+[2025-07-19T18:08:52.666Z] Hook triggered: Notification - notification - 
+[2025-07-19T18:08:52.871Z] ✅ Hook sent successfully: Notification - notification
+[2025-07-19T18:09:34.717Z] Hook triggered: Message -  - 
+[2025-07-19T18:09:34.933Z] ✅ Hook sent successfully: Message - 
+[2025-07-19T18:09:42.955Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:09:43.244Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:09:46.581Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:09:46.790Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:09:52.542Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:09:52.801Z] ✅ Hook sent successfully: PreToolUse - 
+[2025-07-19T18:09:56.179Z] Hook triggered: PostToolUse -  - 
+[2025-07-19T18:09:56.399Z] ✅ Hook sent successfully: PostToolUse - 
+[2025-07-19T18:10:01.271Z] Hook triggered: PreToolUse -  - 
+[2025-07-19T18:10:01.559Z] ✅ Hook sent successfully: PreToolUse - 

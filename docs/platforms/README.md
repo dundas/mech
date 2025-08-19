@@ -6,10 +6,10 @@ This directory contains documentation for various platform integrations supporte
 
 Documentation will be added for each supported platform integration:
 
-- Vercel Deployment
-- AWS Infrastructure
+- Vercel
 - MongoDB Atlas
-- Google BigQuery
+- Cloudflare
+- Azure
 - Other Cloud Services
 
 ## Documentation Structure

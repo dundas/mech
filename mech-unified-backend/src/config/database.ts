@@ -1,4 +1,5 @@
 import { MongoClient, Db, Collection, MongoClientOptions } from 'mongodb';
+import mongoose from 'mongoose';
 import { IClaudeSessionV2, ISessionCheckpoint } from '../models/session.model';
 import { IReasoningStep, IReasoningChain } from '../models/reasoning.model';
 import { logger } from '../utils/logger';
@@ -12,6 +13,11 @@ export interface DatabaseCollections {
   reasoningEmbeddings: Collection<any>;
   codeEmbeddings: Collection<any>;
   indexingJobs: Collection<any>;
+  agentRegistrations: Collection<any>;
+  agentMemories: Collection<any>;
+  fileLocks: Collection<any>;
+  agentTasks: Collection<any>;
+  agentEvents: Collection<any>;
 }
 
 class DatabaseManager {
@@ -33,11 +39,20 @@ class DatabaseManager {
         w: 'majority',
       };
       
+      // Connect native MongoDB driver
       this.client = new MongoClient(uri, options);
       await this.client.connect();
       
       const dbName = process.env.MONGODB_DATABASE || 'mechDB';
       this.db = this.client.db(dbName);
+      
+      // Connect Mongoose ODM (for models like DatabaseCredential)
+      await mongoose.connect(uri, {
+        dbName: dbName,
+        maxPoolSize: 10,
+        minPoolSize: 2,
+        retryWrites: true,
+      });
       
       // Initialize collections
       this.collections = {
@@ -49,6 +64,11 @@ class DatabaseManager {
         reasoningEmbeddings: this.db.collection('reasoning_embeddings'),
         codeEmbeddings: this.db.collection('code_embeddings'),
         indexingJobs: this.db.collection('indexing_jobs'),
+        agentRegistrations: this.db.collection('agent_registrations'),
+        agentMemories: this.db.collection('agent_memories'),
+        fileLocks: this.db.collection('file_locks'),
+        agentTasks: this.db.collection('agent_tasks'),
+        agentEvents: this.db.collection('agent_events'),
       };
       
       // Create indexes
@@ -57,6 +77,7 @@ class DatabaseManager {
       logger.info('✅ Connected to MongoDB successfully', {
         database: dbName,
         host: new URL(uri).hostname,
+        mongoose: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
       });
     } catch (error) {
       logger.error('❌ Failed to connect to MongoDB', error);
@@ -106,11 +127,65 @@ class DatabaseManager {
         { key: { 'timestamps.indexed': -1 } },
       ]);
       
-      // Indexing jobs indexes
-      await this.collections.indexingJobs.createIndexes([
-        { key: { jobId: 1 }, unique: true },
+      // Indexing jobs indexes (handle existing null values)
+      try {
+        await this.collections.indexingJobs.createIndexes([
+          { key: { jobId: 1 }, unique: true, sparse: true },
+          { key: { projectId: 1, status: 1 } },
+          { key: { 'timestamps.created': -1 } },
+        ]);
+      } catch (error: any) {
+        if (error.code === 11000) {
+          // Duplicate key error - drop and recreate without unique constraint
+          await this.collections.indexingJobs.dropIndex('jobId_1');
+          await this.collections.indexingJobs.createIndexes([
+            { key: { jobId: 1 }, sparse: true },
+            { key: { projectId: 1, status: 1 } },
+            { key: { 'timestamps.created': -1 } },
+          ]);
+        } else {
+          throw error;
+        }
+      }
+      
+      // Agent registrations indexes
+      await this.collections.agentRegistrations.createIndexes([
+        { key: { agentId: 1 }, unique: true },
+        { key: { projectId: 1, 'session.status': 1 } },
+        { key: { 'session.lastHeartbeat': -1 } },
+        { key: { userId: 1 } }
+      ]);
+      
+      // Agent memories indexes
+      await this.collections.agentMemories.createIndexes([
+        { key: { memoryId: 1 }, unique: true },
+        { key: { agentId: 1, projectId: 1, createdAt: -1 } },
+        { key: { type: 1, projectId: 1 } },
+        { key: { importance: -1 } },
+        { key: { 'metadata.tags': 1 } }
+      ]);
+      
+      // File locks indexes
+      await this.collections.fileLocks.createIndexes([
+        { key: { filePath: 1, projectId: 1 } },
+        { key: { agentId: 1 } },
+        { key: { expiresAt: 1 }, expireAfterSeconds: 0 }
+      ]);
+      
+      // Agent tasks indexes
+      await this.collections.agentTasks.createIndexes([
+        { key: { taskId: 1 }, unique: true },
         { key: { projectId: 1, status: 1 } },
-        { key: { 'timestamps.created': -1 } },
+        { key: { assignedTo: 1, status: 1 } },
+        { key: { priority: -1, createdAt: 1 } }
+      ]);
+      
+      // Agent events indexes
+      await this.collections.agentEvents.createIndexes([
+        { key: { eventId: 1 }, unique: true },
+        { key: { agentId: 1, timestamp: -1 } },
+        { key: { projectId: 1, eventType: 1 } },
+        { key: { timestamp: -1 } }
       ]);
       
       logger.info('✅ Database indexes created successfully');
@@ -126,8 +201,14 @@ class DatabaseManager {
       this.client = null;
       this.db = null;
       this.collections = null;
-      logger.info('Disconnected from MongoDB');
     }
+    
+    // Disconnect Mongoose
+    if (mongoose.connection.readyState !== 0) {
+      await mongoose.disconnect();
+    }
+    
+    logger.info('Disconnected from MongoDB');
   }
   
   getDb(): Db {

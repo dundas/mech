@@ -19,7 +19,13 @@ import { sessionRouter } from './routes/sessions';
 import { reasoningRouter } from './routes/reasoning';
 import { claudeRouter } from './routes/claude';
 import { dbAnalyzerRouter } from './routes/db-analyzer';
-import { codebaseIndexerRouter } from './routes/codebase-indexer';
+import { databaseCredentialsRouter } from './routes/database-credentials';
+// import { codebaseIndexerRouter } from './routes/codebase-indexer';
+import { memoryRecallRouter } from './routes/memory-recall';
+import { agentRouter } from './routes/agents';
+import { projectRouter } from './routes/projects';
+import { explainRouter } from './routes/explain';
+import { discoveryRouter } from './routes/discovery';
 
 export function createApp(): Application {
   const app = express();
@@ -86,20 +92,48 @@ export function createApp(): Application {
   // Health check routes (no auth required)
   app.use('/api/health', healthRouter);
   
+  // Discovery routes (no auth required)
+  app.use('/api/discovery', discoveryRouter);
+  
   // API routes
   app.use('/api/v2/sessions', sessionRouter);
   app.use('/api/v2/reasoning', reasoningRouter);
   app.use('/api/v2/claude', claudeRouter);
   app.use('/api/db-analyzer', dbAnalyzerRouter);
-  app.use('/api/codebase-indexer', codebaseIndexerRouter);
+  app.use('/api/database-credentials', databaseCredentialsRouter);
+  // app.use('/api/codebase-indexer', codebaseIndexerRouter);
+  app.use('/api/memory-recall', memoryRecallRouter);
+  app.use('/api/agents', agentRouter);
+  app.use('/api/projects', projectRouter);
+  app.use('/api/explain', explainRouter);
   
-  // 404 handler
+  // 404 handler with discovery hints
   app.use((req: Request, res: Response) => {
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    
     res.status(404).json({
       success: false,
       error: {
         code: 'RESOURCE_NOT_FOUND',
         message: `Cannot ${req.method} ${req.path}`,
+        hints: {
+          discovery: `${baseUrl}/api/discovery`,
+          availableServices: [
+            '/api/health',
+            '/api/discovery',
+            '/api/projects',
+            '/api/v2/claude',
+            '/api/v2/sessions',
+            '/api/v2/reasoning',
+            '/api/db-analyzer',
+            '/api/database-credentials',
+            '/api/memory-recall',
+            '/api/agents',
+            '/api/explain'
+          ],
+          documentation: `${baseUrl}/api/discovery?format=markdown`,
+          quickStart: `${baseUrl}/api/discovery`
+        }
       },
     });
   });

@@ -14,7 +14,7 @@ import { DateTime } from 'luxon';
 import axios from 'axios';
 
 export class ScheduleService {
-  private schedulerQueue: Queue;
+  private schedulerQueue: Queue | undefined;
 
   constructor(private queueManager: QueueManager) {
     // Create a dedicated queue for the scheduler
@@ -290,7 +290,7 @@ export class ScheduleService {
         if (attempt >= maxAttempts) {
           // Final attempt failed
           schedule.lastExecutionStatus = 'failed';
-          schedule.lastExecutionError = error.message;
+          schedule.lastExecutionError = error instanceof Error ? error.message : String(error);
           await schedule.save();
           
           logger.error(`HTTP call failed for schedule ${schedule.name} after ${maxAttempts} attempts:`, error);
@@ -309,11 +309,14 @@ export class ScheduleService {
   }
 
   private async addScheduleToQueue(schedule: ISchedule): Promise<string> {
-    const jobName = `schedule_${schedule._id}`;
-    const jobData = { scheduleId: schedule._id.toString() };
+    const jobName = `schedule_${String(schedule._id)}`;
+    const jobData = { scheduleId: String(schedule._id) };
 
     if (schedule.schedule.cron) {
       // Recurring job with cron pattern
+      if (!this.schedulerQueue) {
+        throw new Error('Scheduler queue not initialized');
+      }
       const job = await this.schedulerQueue.add(jobName, jobData, {
         repeat: {
           pattern: schedule.schedule.cron,
@@ -328,9 +331,12 @@ export class ScheduleService {
       // One-time scheduled job
       const delay = new Date(schedule.schedule.at).getTime() - Date.now();
       if (delay > 0) {
+        if (!this.schedulerQueue) {
+          throw new Error('Scheduler queue not initialized');
+        }
         const job = await this.schedulerQueue.add(jobName, jobData, {
           delay,
-          jobId: `once_${schedule._id}_${Date.now()}`
+          jobId: `once_${String(schedule._id)}_${Date.now()}`
         });
         return job.id!;
       }
@@ -342,6 +348,9 @@ export class ScheduleService {
 
   private async removeFromQueue(jobKey: string): Promise<void> {
     try {
+      if (!this.schedulerQueue) {
+        throw new Error('Scheduler queue not initialized');
+      }
       await this.schedulerQueue.removeRepeatableByKey(jobKey);
     } catch (error) {
       logger.error(`Error removing job from queue: ${error}`);
@@ -427,7 +436,7 @@ export class ScheduleService {
 
   private formatScheduleResponse(schedule: ISchedule): ScheduleResponse {
     return {
-      id: schedule._id.toString(),
+      id: String(schedule._id),
       name: schedule.name,
       description: schedule.description,
       schedule: {

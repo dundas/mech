@@ -1,0 +1,3 @@
+Test file to verify agent memory storage
+Created at: 2025-07-18
+Purpose: Testing if hook events are stored as agent memories

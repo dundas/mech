@@ -1,0 +1,21 @@
+# Scheduler Queue Service - Runtime Compilation
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Run MongoDB stubs creation
+RUN node scripts/create-mongodb-stubs.js
+
+# Expose port
+EXPOSE 3003
+
+# Use ts-node for runtime compilation (bypasses build issues)
+ENV NODE_ENV=production
+CMD ["npx", "ts-node", "--transpile-only", "src/index.ts"]
